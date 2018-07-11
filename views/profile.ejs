@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Barista Page</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Wendy+One" rel="stylesheet">
+  <link rel="stylesheet" href="style4.css">
+</head>
+
+<body>
+  <header class="clearfix">
+    <section>
+      <h3>Barista</h3>
+      <% if (user.local.email) { %>
+        <p>
+          <strong>id</strong>:
+          <%= user._id %><br>
+            <strong>email</strong>:
+            <%= user.local.email %><br>
+        </p>
+
+    </section>
+    <section class="links">
+      <a href="/unlink/local" class="btn btn-default">Unlink</a>
+      <% } else { %>
+        <a href="/connect/local" class="btn btn-default">Connect Local</a>
+        <% } %>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </section>
+
+
+  </header>
+  <section class="container clearfix">
+    <section class="display">
+      <h3>Orders</h3>
+      <ul class="messages">
+        <% for(var i=0; i<messages.length; i++) {%>
+          <% if(messages[i].complete === false) {%>
+          <li class="message">
+            <span><%= messages[i].name %></span>
+            <span><%= messages[i].type %></span>
+            <span><%= messages[i].size %></span>
+            <span><%= messages[i].quantity %></span>
+            <span><%= messages[i].other %></span>
+            <span><i class="fas fa-check"></i></span>
+          </li>
+          <% } %>
+          <% } %>
+      </ul>
+    </section>
+
+    <section class="display">
+      <h2>Complete</h2>
+      <ul class="messages">
+        <% for(var i=0; i<messages.length; i++) {%>
+          <% if(messages[i].complete === true) {%>
+          <li class="message">
+            <span><%= messages[i].name %></span>
+            <span><%= messages[i].type %></span>
+            <span><%= messages[i].size %></span>
+            <span><%= messages[i].quantity %></span>
+            <span><%= messages[i].other %></span>
+            <span><i class="fas fa-trash"></i></span>
+          </li>
+          <% } %>
+          <% } %>
+      </ul>
+    </section>
+    <footer></footer>
+    <script src="main.js"></script>
+
+</body>
+
+</html>
